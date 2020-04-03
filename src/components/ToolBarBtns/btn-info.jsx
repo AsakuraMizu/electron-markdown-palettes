@@ -16,7 +16,13 @@ export default {
                             <strong>{ t('Markdown*Palettes') }</strong> { t('是一个开源的 Markdown 编辑器，面向现代化网络环境。') }
                         </p>
                         <p>
-                            <a href="https://github.com/luogu-dev/markdown-palettes" target="_blank">{ t('访问 GitHub 项目地址') }</a>
+                            <a href="https://github.com/luogu-dev/markdown-palettes" target="_blank">{ t('访问 Markdown*Palettes GitHub 项目地址') }</a>
+                        </p>
+                        <p>
+                            <strong>{ t('Electron Markdown*Palettes') }</strong> { t('是一个基于 Markdown*Palettes 的开源跨平台 Markdown 编辑器。') }
+                        </p>
+                        <p>
+                            <a href="https://github.com/water-lift/markdown-palettes" target="_blank">{ t('访问 Electron Markdown*Palettes GitHub 项目地址') }</a>
                         </p>
                     </div>,
                 inject: ['t']

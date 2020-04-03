@@ -105,7 +105,7 @@ export default {
                 linesOffset: linesOffset
             })
         },
-        previewAreaUpdateScrollSync ({ cursorLine, scrollInfo, viewport, linesOffset }) {
+        previewAreaUpdateScrollSync ({ cursorLine, viewport, linesOffset }) {
             const previewArea = this.$refs.previewArea
             const offset = ele => {
                 const eleRect = ele.getBoundingClientRect()

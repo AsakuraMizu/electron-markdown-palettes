@@ -24,7 +24,7 @@ function mixin (dest, src) {
 
 export const defaultConfig = {
     previewDisplay: 'normal',
-    fullScreen: false,
+    fullScreen: true,
     parsers: [
         MarkdownItV,
         MarkdownItVCodemirrorHighlighter,

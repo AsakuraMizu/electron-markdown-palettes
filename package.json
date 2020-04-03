@@ -1,55 +1,73 @@
 {
-  "name": "markdown-palettes",
-  "description": "Markdown*Palettes: Markdown editor for the modern web.",
-  "version": "0.4.13",
-  "author": "Luogu Dev Team",
+  "name": "electron-markdown-palettes",
+  "productName": "electron-markdown-palettes",
+  "description": "Electron Markdown*Palettes: Markdown editor based on Markdown*Palettes.",
+  "version": "0.0.1",
+  "author": "water_lift",
+  "contributors": [
+    "Luogu Dev Team"
+  ],
   "license": "MIT",
-  "main": "dist/MarkdownPalettes.common.js",
-  "style": "dist/MarkdownPalettes.css",
+  "main": "app.js",
   "scripts": {
-    "dev": "vue-cli-service serve --open",
-    "prod-test": "vue-cli-service serve --open --mode production",
-    "build": "vue-cli-service build --name MarkdownPalettes --target lib src/module.js && vue-cli-service build --name MarkdownPalettesBrowser --target lib src/browserModule.js --no-clean && ./.after-build.sh && cp demo.html dist/demo.html",
-    "build-lib": "vue-cli-service build --name MarkdownPalettes --target lib src/module.js && ./.after-build.sh",
-    "build-browser": "vue-cli-service build --name MarkdownPalettesBrowser --target lib src/browserModule.js && ./.after-build.sh",
-    "build-dev": "vue-cli-service build --name MarkdownPalettes --target lib src/browserModule.js --mode development",
+    "dev": "concurrently -k \"NODE_ENV=DEV vue-cli-service serve\" \"NODE_ENV=DEV electron .\"",
+    "serve": "vue-cli-service serve -o",
+    "prod-test": "vue-cli-service build && electron .",
+    "build": "vue-cli-service build && electron-packager . --out dist",
+    "build-lib": "vue-cli-service build",
+    "pack": "electron-packager . --out dist",
     "lint": "vue-cli-service lint",
-    "lint-fix": "vue-cli-service lint --fix",
-    "analyze": "vue-cli-service build --name MarkdownPalettes --target lib src/browserModule.js --report",
-    "test-dist": "hs dist"
+    "lint-fix": "vue-cli-service lint --fix"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.15",
-    "@fortawesome/free-solid-svg-icons": "^5.7.2",
-    "@fortawesome/vue-fontawesome": "^0.1.6",
-    "axios": "^0.18.0",
-    "codemirror": "^5.39.0",
-    "global": "^4.3.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/vue-fontawesome": "^0.1.9",
+    "axios": "^0.19.2",
+    "codemirror": "^5.52.2",
+    "core-js": "^3.6.4",
+    "global": "^4.4.0",
     "katex": "^0.11.1",
-    "lodash": "4.17.10",
-    "markdown-it": "^8.4.2",
-    "markdown-it-v": "^1.2.1",
-    "markdown-it-v-codemirror-highlighter": "1.0.0",
-    "vue": "^2.5.11"
+    "lodash": "^4.17.15",
+    "markdown-it": "^10.0.0",
+    "markdown-it-v": "^1.2.0",
+    "markdown-it-v-codemirror-highlighter": "^1.0.0",
+    "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-object-rest-spread": "7.3.1",
-    "@babel/preset-env": "7.3.1",
-    "@vue/cli-plugin-babel": "^3.4.0",
-    "@vue/cli-plugin-eslint": "^3.1.5",
-    "@vue/cli-service": "3.4.0",
-    "@vue/eslint-config-standard": "^4.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-eslint": "~4.2.0",
+    "@vue/cli-service": "~4.2.0",
+    "babel-eslint": "^10.0.3",
     "babel-plugin-lodash": "^3.3.4",
-    "http-server": "^0.11.1",
-    "stylus": "^0.54.5",
+    "concurrently": "^5.1.0",
+    "electron": "^8.2.0",
+    "electron-packager": "^14.2.1",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.1.2",
+    "http-server": "^0.12.1",
+    "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
   },
   "browserslist": [
-    "Edge >= 15",
-    "Firefox >= 53",
-    "Chrome >= 55",
-    "Opera >= 42",
-    "Safari >= 10.1"
+    "> 1%",
+    "last 2 versions"
   ]
 }

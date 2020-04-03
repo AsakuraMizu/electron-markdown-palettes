@@ -12,25 +12,10 @@ for rendering output.
 
 var katex = require('katex');
 
-// Luogu Dev: always recognize as valid delim
-function isValidDelim(state, pos) {
-    return {
-        can_open: true,
-        can_close: true
-    };
-}
-
 function math_inline(state, silent) {
-    var start, match, token, res, pos, esc_count;
+    var start, match, token, pos;
 
     if (state.src[state.pos] !== "$") { return false; }
-
-    res = isValidDelim(state, state.pos);
-    if (!res.can_open) {
-        if (!silent) { state.pending += "$"; }
-        state.pos += 1;
-        return true;
-    }
 
     // First check for and bypass all properly escaped delimieters
     // This loop will assume that the first leading backtick can not
@@ -60,14 +45,6 @@ function math_inline(state, silent) {
     if (match - start === 0) {
         if (!silent) { state.pending += "$$"; }
         state.pos = start + 1;
-        return true;
-    }
-
-    // Check for valid closing delimiter
-    res = isValidDelim(state, match);
-    if (!res.can_close) {
-        if (!silent) { state.pending += "$"; }
-        state.pos = start;
         return true;
     }
 
@@ -195,4 +172,4 @@ export default function math_plugin(md, options) {
     });
     md.renderer.rules.math_inline = inlineRenderer;
     md.renderer.rules.math_block = blockRenderer;
-};
+}
